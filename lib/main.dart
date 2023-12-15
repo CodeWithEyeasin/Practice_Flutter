@@ -35,7 +35,6 @@ class HomeScreen extends StatelessWidget
         ),
         backgroundColor: Colors.amber,
         elevation: 5,//shadow use
-
       ),
       body: Center(
         //child: Image.network('https://www.univariety.com/blog/wp-content/uploads/2014/08/motivational-goals.jpg'),)
@@ -44,24 +43,7 @@ class HomeScreen extends StatelessWidget
             width: 300,
             fit: BoxFit.cover,
           //repeat: ImageRepeat.repeat,
-
           ),
-      /* Center(
-       child: Text('Hello Flutter, My name is Eyeasin Arafat',
-          textAlign: TextAlign.center,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-          color: Colors.white,
-          fontSize: 34,
-            fontWeight: FontWeight.bold,
-          //backgroundColor: Colors.white,
-            decoration: TextDecoration.underline,
-          wordSpacing: 1,
-          letterSpacing: 2,
-        ),),
-
-      ),*/
       ),
     );
   }
