@@ -25,9 +25,21 @@ class HomeScreen extends StatelessWidget
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Color(0xFF10c419),
       body: Center(
-        child: Text('Hello Flutter'),
+        child: Text('Hello Flutter, My name is Eyeasin Arafat',
+          textAlign: TextAlign.center,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+          color: Colors.white,
+          fontSize: 34,
+            fontWeight: FontWeight.bold,
+          //backgroundColor: Colors.white,
+            decoration: TextDecoration.underline,
+          wordSpacing: 1,
+          letterSpacing: 2,
+        ),),
       ),
     );
   }
