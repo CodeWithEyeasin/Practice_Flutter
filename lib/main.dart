@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,183 +8,92 @@ void main()
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget
-{
+class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
-      home: HomeScreen(),
-
+      home: HomeActivity(),
     );
   }
-
 }
 
-class HomeScreen extends StatelessWidget
-{
-  TextEditingController searchTextFiledController =TextEditingController();
+class HomeActivity extends StatelessWidget{
+
+//tos message and snakebar is same
+  mySnackBar(context,msg) {
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));}
+
+  //create list
+  var MyItems = [
+    {"Name": "John Doe", "City": "New York", "Age": 28},
+    {"Name": "Alice Smith", "City": "London", "Age": 35},
+    {"Name": "Robert Johnson", "City": "Los Angeles", "Age": 42},
+    {"Name": "Emily Davis", "City": "Paris", "Age": 29},
+    {"Name": "Michael Brown", "City": "Sydney", "Age": 31},
+    {"Name": "Sophia Lee", "City": "Tokyo", "Age": 26},
+    {"Name": "Daniel Kim", "City": "Seoul", "Age": 38},
+    {"Name": "Olivia Wilson", "City": "Toronto", "Age": 33},
+    {"Name": "Ethan Miller", "City": "Berlin", "Age": 45},
+    {"Name": "Ava Martinez", "City": "Mexico City", "Age": 27},
+    {"Name": "Matthew Clark", "City": "Chicago", "Age": 30},
+    {"Name": "Grace Turner", "City": "Sydney", "Age": 29},
+    {"Name": "Ryan Garcia", "City": "Los Angeles", "Age": 32},
+    {"Name": "Sophie Baker", "City": "Paris", "Age": 28},
+    {"Name": "Samuel White", "City": "London", "Age": 37},
+    {"Name": "Emma Turner", "City": "Berlin", "Age": 31},
+    {"Name": "William Carter", "City": "Tokyo", "Age": 34},
+    {"Name": "Lily Adams", "City": "Toronto", "Age": 26},
+    {"Name": "Benjamin Hall", "City": "Seoul", "Age": 40},
+    {"Name": "Zoe Martinez", "City": "Mexico City", "Age": 33}
+  ];
+
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home',),
         leading: Icon(Icons.home),
+        title: Text('Home'),
       ),
-    body:Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(onPressed: () {
-print('Tapped on Tab button');
-          },
-              child: Text('Tab here'),
-          onLongPress: () {
-            print('Long pressed on Tab button');
-          },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.pink,
-              foregroundColor: Colors.black,
-              // maximumSize: Size(300, 80),
-              // minimumSize: Size(300, 40),
-              // padding: EdgeInsets.all(16),
-              //   padding: EdgeInsets.symmetric(horizontal: 32,vertical: 16),
-                padding: EdgeInsets.only(left: 32,top: 16,right: 32,bottom: 30),
-              elevation: 5,
-              shadowColor: Colors.black,
-              textStyle: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              )
-            ),
 
+      body: ListView.builder(
+      itemCount: MyItems.length,
+      itemBuilder: (context,index){
+        return InkWell(
+          onDoubleTap: (){mySnackBar(context, MyItems[index]["Age"].toString());},
+          child: ListTile(
+            leading: Icon(Icons.person),
+            title: Text(MyItems[index]["Name"].toString()),
+            subtitle: Text(MyItems[index]["city"].toString()),
           ),
-TextButton(onPressed: (){
-  print('Pressed on text button');
-}, child: Text('Text Button'),
-style: TextButton.styleFrom(
-  backgroundColor: Colors.lightGreen,
-  //all same
-),
-),
-          IconButton(onPressed: (){}, icon: Icon(Icons.add)),
-
-          // FloatingActionButton(onPressed: (){},child: Text(' button'),)
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: searchTextFiledController,
-              onTap: () {
-                print('Tapped');
-              },
-              keyboardType: TextInputType.phone,
-              onChanged: (String input){
-                print('Input');
-              },
-              textInputAction: TextInputAction.search,
-              onSubmitted: (String value){
-                print(searchTextFiledController.text);
-                searchTextFiledController.clear();
-              },
-              obscureText: true,
-              // obscureText: false,
-              enabled: true,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                suffixIcon: Icon(Icons.remove_red_eye_outlined),
-                hintText: 'Enter Your Name',
-                label: Text('Name'),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.amber,
-                    width: 10,
-                    style: BorderStyle.solid,
-                  )
-                ),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.amber,
-                      width: 10,
-                      style: BorderStyle.solid,
-                    )
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.green,
-                      width: 1,
-                      style: BorderStyle.solid,
-                    )
-                ),
-                disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                      width: 10,
-                      style: BorderStyle.solid,
-                    )
-                ),
-
-              ),
-            ),
-          ),
-      GestureDetector(
-  onTap: () {
-    print('tapped on container');
-  },
-  child: Container(
-
-
-    margin: EdgeInsets.all(8),
-    width: 500,
-    height: 200,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(16),
-      color: Colors.red,
-      border: Border.all(
-          color: Colors.green,
-          width: 10,
-          style: BorderStyle.solid
-      ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey,
-          blurRadius: 4,
-          offset: Offset(4,8),
-        ),
-      ],
-      //shape: BoxShape.circle
-
+        );
+      },
     ),
-    alignment: Alignment.center,
-    child:Icon(Icons.android),
-    //Text('Text'),
-  ),
-),
-          InkWell(
-            onTap: () {
-              print('on tapped on text Button');
 
-            },
-            splashColor: Colors.red,
-            highlightColor: Colors.green,
-            radius: 10,
-            child: Text('Text Button'),
-          ),
-        ],
-      ),
-    ) ,
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        child: Icon(Icons.add),
-      ),
 
+      //this is Dynamic Listview
+      // ListView.builder(
+      //   itemCount: MyItems.length,
+      //   itemBuilder: (context,index){
+      //     return ListTile(
+      //       leading: Icon(Icons.person),
+      //       title: Text(MyItems[index]["Name"].toString()),
+      //       subtitle: Text(MyItems[index]["city"].toString()),
+      //       onTap: (){mySnackBar(context, MyItems[index]["Age"].toString());},
+      //     );
+      //   },
+      // ),
+      //this is static listview
+      // ListView(
+      //   children: [
+      //     ListTile(leading: Icon(Icons.star), title: Text('Item 1'), onTap: (){mySnackBar(context, 'Item 1');},),
+      //     ListTile(leading: Icon(Icons.star), title: Text('Item 2'), onTap: (){mySnackBar(context, 'Item 2');},),
+      //     ListTile(leading: Icon(Icons.star), title: Text('Item 3'), onTap: (){mySnackBar(context, 'Item 3');},),
+      //     ListTile(leading: Icon(Icons.star), title: Text('Item 4'), onTap: (){mySnackBar(context, 'Item 4');},),
+      //     ListTile(leading: Icon(Icons.star), title: Text('Item 5'), onTap: (){mySnackBar(context, 'Item 5');},),
+      //
+      //   ],
+      // ),
     );
   }
-
 }
