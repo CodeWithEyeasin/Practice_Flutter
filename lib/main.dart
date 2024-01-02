@@ -23,6 +23,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  mySnackBar(context,msg) {
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));}
+
   int count=0;
   @override
   Widget build(BuildContext context) {
@@ -38,17 +42,30 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(count.toString() ,style: TextStyle(
               fontSize: 50,
             ),),
-            ElevatedButton(onPressed: () {
-              count++;
-              setState(() {});
-            }, child: Icon(Icons.add)),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: () {
+                  count++;
+                  setState(() {});
+                }, child: Icon(Icons.add)),
+              ],
+            ),
+
 
             ElevatedButton(onPressed: () {
-              count--;
+              if(count<=0){
+                mySnackBar(context, 'invalid value');
+              }
+              else{
+                count--;
+              }
               setState(() {});
               }, child: Icon(Icons.remove)),
 
           ],
+
 
         ),
       ),
