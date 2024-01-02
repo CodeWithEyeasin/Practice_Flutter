@@ -38,22 +38,21 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(count.toString() ,style: TextStyle(
               fontSize: 50,
             ),),
-                    ElevatedButton(onPressed: () {
-                      count--;
-                      setState(() {});
-                    }, child: Icon(Icons.remove)),
+            ElevatedButton(onPressed: () {
+              count++;
+              setState(() {});
+            }, child: Icon(Icons.add)),
+
+            ElevatedButton(onPressed: () {
+              count--;
+              setState(() {});
+              }, child: Icon(Icons.remove)),
+
           ],
+
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          count++;
-          print(count);
-          setState(() {});
-        },
-        child: Icon(Icons.add),
 
-      ),
     );
   }
 }
