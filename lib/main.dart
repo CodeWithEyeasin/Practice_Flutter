@@ -1,69 +1,59 @@
+//statelesswidget is immutable
+//statefulwidget is mutable
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main()
-{
+void main(){
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget
-{
+class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       home: HomeScreen(),
-
     );
   }
+}
+class HomeScreen extends StatefulWidget {
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class HomeScreen extends StatelessWidget
-{
+class _HomeScreenState extends State<HomeScreen> {
+  int count=0;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      backgroundColor: Color(0xFF10c419),
       appBar: AppBar(
-        leading: Icon(Icons.home, color: Colors.black54, size: 30,),//home icon
-        title: Text('Home',
-        style: TextStyle(
-            color: Colors.black,
-        ),
-        ),
-        backgroundColor: Colors.amber,
-        elevation: 5,//shadow use
-
+        leading: Icon(Icons.home),
+        title: Text('Home'),
       ),
       body: Center(
-        //child: Image.network('https://www.univariety.com/blog/wp-content/uploads/2014/08/motivational-goals.jpg'),)
-          child: Image.asset('Image/uncle Bob.jpg',
-            height: 300,
-            width: 300,
-            fit: BoxFit.cover,
-          //repeat: ImageRepeat.repeat,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(count.toString() ,style: TextStyle(
+              fontSize: 50,
+            ),),
+                    ElevatedButton(onPressed: () {
+                      count--;
+                      setState(() {});
+                    }, child: Icon(Icons.remove)),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          count++;
+          print(count);
+          setState(() {});
+        },
+        child: Icon(Icons.add),
 
-          ),
-      /* Center(
-       child: Text('Hello Flutter, My name is Eyeasin Arafat',
-          textAlign: TextAlign.center,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-          color: Colors.white,
-          fontSize: 34,
-            fontWeight: FontWeight.bold,
-          //backgroundColor: Colors.white,
-            decoration: TextDecoration.underline,
-          wordSpacing: 1,
-          letterSpacing: 2,
-        ),),
-
-      ),*/
       ),
     );
   }
-
 }
