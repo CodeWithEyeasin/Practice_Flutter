@@ -26,6 +26,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int Count1=1;
+  int Count2=1;
+  int Count3=1;
   int Amount1=51;
   int Amount2=30;
   int Amount3=43;
@@ -258,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.normal,
                             ),),
                           ),
-                          Text(Count1.toString(),style: const TextStyle(
+                          Text(Count2.toString(),style: const TextStyle(
                             fontSize: 18,
                           ),),
                           ElevatedButton(
@@ -390,7 +392,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.normal,
                             ),),
                           ),
-                          Text(Count1.toString(),style: const TextStyle(
+                          Text(Count3.toString(),style: const TextStyle(
                             fontSize: 18,
                           ),),
                           ElevatedButton(
