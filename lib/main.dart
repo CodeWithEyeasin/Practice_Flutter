@@ -26,6 +26,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int Count1=1;
+  int Amount1=51;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,9 +142,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 100,
                       width: 129,
                       alignment: Alignment.centerRight,
-                      child: const Column(
+                      child: Column(
                         children: [
-                          Icon(Icons.more_vert,color: Colors.grey,)
+                          const Icon(Icons.more_vert,color: Colors.grey,),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            height: 66,
+                            width: 40,
+                            child: Text('$Amount1\$',style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 18
+                            ),),
+                          ),
                         ],
                         
                       ),
