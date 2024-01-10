@@ -50,90 +50,109 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 Image.network('https://www.globalrepublic.in/cdn/shop/articles/image2.png?v=1666865339'),
-                Column(
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Column(
+                    children: [
+                      RichText(text: const TextSpan(
+                        text: 'Pullover\n',style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                        children: [
+                          TextSpan(
+                            text: 'Color: ',style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 17,
+                          ),
+                          ),
+                          TextSpan(
+                            text: 'Black   ',style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.normal,
+
+                          ),
+                          ),
+                          TextSpan(
+                            text: 'Size: ',style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.grey,
+
+                          ),
+                          ),
+                          TextSpan(
+                            text: 'L',style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black,
+
+                          ),
+                          ),
+                        ]
+                      ),),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+
+
+                            },
+                            style: ElevatedButton.styleFrom(
+                                shape: CircleBorder(),
+                                backgroundColor: Colors.white
+                            ),
+                            child: const Text('-',style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 24,
+                              fontWeight: FontWeight.normal,
+                            ),),
+                          ),
+                          Text(Count1.toString(),style: const TextStyle(
+                            fontSize: 20,
+                          ),),
+                          ElevatedButton(
+                            onPressed: () {
+
+
+                            },
+                            style: ElevatedButton.styleFrom(
+                                shape: CircleBorder(),
+                                backgroundColor: Colors.white
+                            ),
+                            child: const Text('+',style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 24,
+                              fontWeight: FontWeight.normal,
+                            ),),
+                          ),
+
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                 Row(
                   children: [
-                    RichText(text: const TextSpan(
-                      text: 'Pullover\n',style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                    Container(
+                      height: 100,
+                      width: 129,
+                      alignment: Alignment.centerRight,
+                      child: const Column(
+                        children: [
+                          Icon(Icons.more_vert,color: Colors.grey,)
+                        ],
+                        
+                      ),
                     ),
-                      children: [
-                        TextSpan(
-                          text: 'Color: ',style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 17,
-                        ),
-                        ),
-                        TextSpan(
-                          text: 'Black   ',style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.normal,
 
-                        ),
-                        ),
-                        TextSpan(
-                          text: 'Size: ',style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.grey,
-
-                        ),
-                        ),
-                        TextSpan(
-                          text: 'L',style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-
-                        ),
-                        ),
-                      ]
-                    ),),
-                    Row(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-
-
-                          },
-                          style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              backgroundColor: Colors.white
-                          ),
-                          child: const Text('-',style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 24,
-                            fontWeight: FontWeight.normal,
-                          ),),
-                        ),
-                        Text(Count1.toString(),style: const TextStyle(
-                          fontSize: 20,
-                        ),),
-                        ElevatedButton(
-                          onPressed: () {
-
-
-                          },
-                          style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              backgroundColor: Colors.white
-                          ),
-                          child: const Text('+',style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 24,
-                            fontWeight: FontWeight.normal,
-                          ),),
-                        ),
-
-                      ],
-                    ),
                   ],
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
