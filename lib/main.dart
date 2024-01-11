@@ -515,7 +515,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ElevatedButton(
                             onPressed: () {
                               if(Count3==5){
-                                myDiaglog('Sport Dress');
+                                Center(
+                                  child:myDiaglog('Sport Dress'),
+                                );
+
                                 setState(() {});
                               }else{
                                 Count3++;
@@ -526,7 +529,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             },
                             style: ElevatedButton.styleFrom(
-                                shape: CircleBorder(),
+                                shape: const CircleBorder(),
                                 backgroundColor: Colors.white
                             ),
                             child: const Text('+',style: TextStyle(
