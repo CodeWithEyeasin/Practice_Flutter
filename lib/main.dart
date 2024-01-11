@@ -40,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int Amount2=30;
   int Amount3=43;
   int total=124;
-
   TotalAmount() {
     return total=((Count1*Amount1)+(Count2*Amount2)+(Count3*Amount3));
   }
@@ -140,13 +139,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: const Icon(Icons.search,size: 25,),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 15,right: 15),
+                margin: const EdgeInsets.only(left: 13,right: 13),
                 height: 50,
                 width: 400,
                 child: const Text('My Bag',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 15,right: 15),
+                margin: const EdgeInsets.only(left: 13,right: 13),
                 height: 100,
                 width: 400,
                 decoration: BoxDecoration(
@@ -236,12 +235,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),),
                               ElevatedButton(
                                 onPressed: () {
+                                  Count1++;
+                                  TotalAmount();
+                                  setState(() {});
+
                                   if(Count1==5){
                                     myDiaglog('Pullover');
-                                  }else{
-                                    Count1++;
-                                    TotalAmount();
-                                    setState(() {});
                                   }
 
 
@@ -274,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Container(
                                 alignment: Alignment.bottomLeft,
                                 height: 66,
-                                width: 40,
+                                width: 45,
                                 child: Text('$Amount1\$',style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 18,
@@ -292,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 15,right: 15,top: 15),
+                margin: const EdgeInsets.only(left: 13,right: 13,top: 15),
                 height: 100,
                 width: 400,
                 decoration: BoxDecoration(
@@ -370,7 +369,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    shape: CircleBorder(),
+                                    shape: const CircleBorder(),
                                     backgroundColor: Colors.white
                                 ),
                                 child: const Text('-',style: TextStyle(
@@ -384,19 +383,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),),
                               ElevatedButton(
                                 onPressed: () {
+                                  Count2++;
+                                  TotalAmount();
+                                  setState(() {});
+
                                   if(Count2==5){
                                     myDiaglog('T-Shirt');
-                                    setState(() {});
-                                  }else{
-                                    Count2++;
-                                    TotalAmount();
                                     setState(() {});
                                   }
 
 
+
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    shape: CircleBorder(),
+                                    shape: const CircleBorder(),
                                     backgroundColor: Colors.white
                                 ),
                                 child: const Text('+',style: TextStyle(
@@ -423,7 +423,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Container(
                                 alignment: Alignment.bottomLeft,
                                 height: 66,
-                                width: 40,
+                                width: 45,
                                 child: Text('$Amount2\$',style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 18,
@@ -441,7 +441,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 15,right: 15,top: 15),
+                margin: const EdgeInsets.only(left: 13,right: 13,top: 15),
                 height: 100,
                 width: 400,
                 decoration: BoxDecoration(
@@ -519,7 +519,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    shape: CircleBorder(),
+                                    shape: const CircleBorder(),
                                     backgroundColor: Colors.white
                                 ),
                                 child: const Text('-',style: TextStyle(
@@ -533,17 +533,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),),
                               ElevatedButton(
                                 onPressed: () {
+                                  Count3++;
+                                  TotalAmount();
+                                  setState(() {});
+
                                   if(Count3==5){
                                     Center(
                                       child:myDiaglog('Sport Dress'),
                                     );
 
                                     setState(() {});
-                                  }else{
-                                    Count3++;
-                                    TotalAmount();
-                                    setState(() {});
                                   }
+
+
 
 
                                 },
@@ -575,7 +577,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Container(
                                 alignment: Alignment.bottomLeft,
                                 height: 66,
-                                width: 40,
+                                width: 45,
                                 child: Text('$Amount3\$',style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
@@ -593,7 +595,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 15,right: 15),
+                margin: const EdgeInsets.only(left: 13,right: 13),
                 alignment: Alignment.bottomRight,
                 height: 276,
                 width: 400,
