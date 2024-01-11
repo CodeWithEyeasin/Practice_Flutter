@@ -10,8 +10,10 @@ void main(){
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return  MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFF1F1F1)),
+      home:  HomeScreen(),
+
     );
   }
 }
@@ -31,6 +33,17 @@ class _HomeScreenState extends State<HomeScreen> {
   int Amount1=51;
   int Amount2=30;
   int Amount3=43;
+  var total =0;
+
+  TotalAmount(){
+   int total1=Count1*Amount1;
+   int total2=Count2*Amount2;
+   int total3=Count3*Amount3;
+   total=total1+total2+total3;
+
+  }
+  mySnackBar(context,msg) {
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));}
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 Image.network('https://www.globalrepublic.in/cdn/shop/articles/image2.png?v=1666865339',
-                  height: 90,width: 70,
-                  fit: BoxFit.fitWidth,
+                  height: 100,width: 70,
+                  fit: BoxFit.cover,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
@@ -115,8 +128,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-
-
+                              if(Count1>1){
+                                Count1--;
+                                TotalAmount();
+                                setState(() {});
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                                 shape: CircleBorder(),
@@ -133,6 +149,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),),
                           ElevatedButton(
                             onPressed: () {
+                             if(Count1==5){
+
+                               setState(() {});
+                             }else{
+                               Count1++;
+                               TotalAmount();
+                               setState(() {});
+                             }
 
 
                             },
@@ -197,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 Image.network('https://images.unsplash.com/photo-1618517351616-38fb9c5210c6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D',
-                  height: 90,width: 70,
+                  height: 100,width: 70,
                   fit: BoxFit.cover,
                 ),
                 Padding(
@@ -247,6 +271,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
+                              if(Count2>1){
+                                Count2--;
+                                TotalAmount();
+                                setState(() {});
+                              }
 
 
                             },
@@ -265,6 +294,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),),
                           ElevatedButton(
                             onPressed: () {
+                              if(Count2==5){
+
+                                setState(() {});
+                              }else{
+                                Count2++;
+                                TotalAmount();
+                                setState(() {});
+                              }
 
 
                             },
@@ -329,8 +366,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 Image.network('https://i.pinimg.com/736x/72/3a/3f/723a3f75f3c8cb5613ec761182904f93.jpg',
-                  height: 90,width: 70,
-                  fit: BoxFit.fitWidth,
+                  height: 100,width: 70,
+                  fit: BoxFit.cover,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
@@ -379,6 +416,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
+                              if(Count3>1){
+                                Count3--;
+                                TotalAmount();
+                                setState(() {});
+                              }
 
 
                             },
@@ -397,6 +439,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),),
                           ElevatedButton(
                             onPressed: () {
+                              if(Count3==5){
+
+                                setState(() {});
+                              }else{
+                                Count3++;
+                                TotalAmount();
+                                setState(() {});
+                              }
 
 
                             },
@@ -445,6 +495,49 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          Container(
+            margin: const EdgeInsets.only(left: 15,right: 15),
+            alignment: Alignment.bottomRight,
+            height: 270,
+            width: 400,
+            child: Row(
+              children: [
+                RichText(text: TextSpan(
+                  text: 'Total amount:                                                           ',
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '$total\$',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      )
+                    ),
+                  ],
+
+                )),
+
+              ],
+            ),
+          ),
+          ElevatedButton(onPressed: (){
+            mySnackBar(context, 'Congratulation');
+
+          },style: ElevatedButton.styleFrom(
+            primary: Colors.red,
+            fixedSize: const Size(360, 10),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(32.0),
+            ),
+
+          ), child: const Text('CHECK OUT',style: TextStyle(
+            color: Colors.white,
+          ),),)
+
         ],
       ),
     );
