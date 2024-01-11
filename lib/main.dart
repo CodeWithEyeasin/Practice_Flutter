@@ -1,6 +1,5 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -12,7 +11,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return  MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFF1F1F1)),
-      home:  HomeScreen(),
+      home:  const HomeScreen(),
 
     );
   }
@@ -33,17 +32,94 @@ class _HomeScreenState extends State<HomeScreen> {
   int Amount1=51;
   int Amount2=30;
   int Amount3=43;
-  var total =0;
+  int total=124;
 
-  TotalAmount(){
-   int total1=Count1*Amount1;
-   int total2=Count2*Amount2;
-   int total3=Count3*Amount3;
-   total=total1+total2+total3;
+  TotalAmount() {
+
+   return total=((Count1*Amount1)+(Count2*Amount2)+(Count3*Amount3));
 
   }
   mySnackBar(context,msg) {
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));}
+
+  myDiaglog(String ItemName){
+    showDialog(context: context, builder: (BuildContext context){
+      return  AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: RichText(text: TextSpan(
+                text: 'Congratulation!\n\n',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: [
+                  const TextSpan(
+                    text: '  You have added\n',
+                    style:  TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.normal,
+                    ),
+
+                  ),
+                  const TextSpan(
+                    text: '                5\n',
+                    style:  TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '$ItemName ',
+                    style:  const TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  const TextSpan(
+                      text: 'on your bag!',
+                    style:  TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ]
+
+              )),
+            )
+          ],
+        ),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(onPressed: (){},
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
+                  fixedSize: const Size(270, 10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                  ),
+
+                ), child: const Text('OKAY'),),
+
+            ],
+          ),
+        ],
+      );
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                                shape: CircleBorder(),
+                                shape: const CircleBorder(),
                                 backgroundColor: Colors.white
                             ),
                             child: const Text('-',style: TextStyle(
@@ -150,8 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ElevatedButton(
                             onPressed: () {
                              if(Count1==5){
-
-                               setState(() {});
+                               myDiaglog('Pullover');
                              }else{
                                Count1++;
                                TotalAmount();
@@ -161,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             },
                             style: ElevatedButton.styleFrom(
-                                shape: CircleBorder(),
+                                shape: const CircleBorder(),
                                 backgroundColor: Colors.white
                             ),
                             child: const Text('+',style: TextStyle(
@@ -295,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ElevatedButton(
                             onPressed: () {
                               if(Count2==5){
-
+                                myDiaglog('T-Shirt');
                                 setState(() {});
                               }else{
                                 Count2++;
@@ -374,7 +449,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       RichText(text: const TextSpan(
-                          text: 'Pullover\n',style: TextStyle(
+                          text: 'Sport Dress\n',style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -440,7 +515,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ElevatedButton(
                             onPressed: () {
                               if(Count3==5){
-
+                                myDiaglog('Sport Dress');
                                 setState(() {});
                               }else{
                                 Count3++;
