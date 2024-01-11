@@ -136,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
             margin: const EdgeInsets.only(left: 15,right: 15),
             height: 50,
             width: 400,
-            child: const Text('My Bag',style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+            child: const Text('My Bag',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
           ),
           Container(
             margin: const EdgeInsets.only(left: 15,right: 15),
