@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 
 void main(){
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget{
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
@@ -35,9 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int total=124;
 
   TotalAmount() {
-
-   return total=((Count1*Amount1)+(Count2*Amount2)+(Count3*Amount3));
-
+    return total=((Count1*Amount1)+(Count2*Amount2)+(Count3*Amount3));
   }
   mySnackBar(context,msg) {
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));}
@@ -153,10 +153,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Row(
               children: [
-                Image.network('https://www.globalrepublic.in/cdn/shop/articles/image2.png?v=1666865339',
-                  height: 100,width: 70,
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(8.0),bottomLeft: Radius.circular(8.0)),
+                  child:  Image.network('https://www.globalrepublic.in/cdn/shop/articles/image2.png?v=1666865339',
+                    height: 100,width: 70,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Column(
@@ -295,10 +299,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Row(
               children: [
-                Image.network('https://images.unsplash.com/photo-1618517351616-38fb9c5210c6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D',
-                  height: 100,width: 70,
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(8.0),bottomLeft: Radius.circular(8.0)),
+                  child: Image.network('https://images.unsplash.com/photo-1618517351616-38fb9c5210c6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D',
+                    height: 100,width: 70,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Column(
@@ -440,10 +448,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Row(
               children: [
-                Image.network('https://i.pinimg.com/736x/72/3a/3f/723a3f75f3c8cb5613ec761182904f93.jpg',
-                  height: 100,width: 70,
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(8.0),bottomLeft: Radius.circular(8.0)),
+                  child: Image.network('https://i.pinimg.com/736x/72/3a/3f/723a3f75f3c8cb5613ec761182904f93.jpg',
+                    height: 100,width: 70,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Column(
