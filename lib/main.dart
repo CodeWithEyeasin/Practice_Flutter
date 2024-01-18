@@ -1,59 +1,127 @@
-//statelesswidget is immutable
-//statefulwidget is mutable
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+///KISS PRINCIPLE -> KIP IT SIMPLE STUPID
 
-void main(){
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
+//Push
+//Pop
+//PushReplacement
+//PushAndRemoveUntil
+//Data Passing -in and back
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomeScreen(),
     );
   }
 }
-class HomeScreen extends StatefulWidget {
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
-class _HomeScreenState extends State<HomeScreen> {
-  int count=0;
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.home),
-        title: Text('Home'),
+        title: const Text('Home'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(count.toString() ,style: TextStyle(
-              fontSize: 50,
-            ),),
-                    ElevatedButton(onPressed: () {
-                      count--;
-                      setState(() {});
-                    }, child: Icon(Icons.remove)),
+            ElevatedButton(onPressed: () {
+              //Route = Screen
+              // Navigator = Road
+              ///Route 1(Current screen) => Route 2(Settings Screen
+              /// step 1- Navigator - push
+              /// Step 2- Context - (Current Screen/Route)
+              /// step 3- Convert SettingsScreen as Route with MaterialPageRoute
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsScreen(username: 'Eyeasin',age: 18,),),
+              ).then((value) {
+                print(value);
+              });
+            }, child: const Text('Go To Setting'))
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          count++;
-          print(count);
-          setState(() {});
-        },
-        child: Icon(Icons.add),
 
-      ),
     );
   }
 }
+
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key, required this.username,this.age});///this.age this is optional
+
+  final String username;
+  final int? age;///this is optional
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(username),
+            Text(age.toString()),
+            ElevatedButton(onPressed: () {
+              /// back to previous screen
+              Navigator.pop(context,'Arafat');
+            }, child: const Text('Back to Home Screen')),
+            ElevatedButton(onPressed: () {
+              /// go to profile
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const ProfileScreen()));
+            }, child: const Text('Go to Profile')),
+
+            ElevatedButton(onPressed: () {
+              /// push by replacement
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const ProfileScreen()));
+            }, child: const Text('Go to Profile by replace')),
+          ],
+        ),
+      ),
+
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () {
+              /// back to Settings screen
+              Navigator.pop(context);
+            }, child: const Text('Back to Settings')),
+            ElevatedButton(onPressed: () {
+              /// back to home screen
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>const HomeScreen()), (route) => false);
+            }, child: const Text('Back to Home')),
+          ],
+        ),
+      ),
+
+    );
+  }
+}
+
+
