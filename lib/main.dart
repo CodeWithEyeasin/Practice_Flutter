@@ -1,648 +1,127 @@
-
-
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+///KISS PRINCIPLE -> KIP IT SIMPLE STUPID
 
-void main(){
-  runApp(DevicePreview(
-    enabled: false,
-    builder: (context) {
-      return const MyApp();
-    }
-  ));
+void main() {
+  runApp(const MyApp());
 }
+//Push
+//Pop
+//PushReplacement
+//PushAndRemoveUntil
+//Data Passing -in and back
 
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFECEBEB)),
-      home:  const HomeScreen(),
+    return const MaterialApp(
+      home: HomeScreen(),
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-
-  int Count1=1;
-  int Count2=1;
-  int Count3=1;
-  int Amount1=51;
-  int Amount2=30;
-  int Amount3=43;
-  int total=124;
-  TotalAmount() {
-    return total=((Count1*Amount1)+(Count2*Amount2)+(Count3*Amount3));
-  }
-  mySnackBar(context,msg) {
-    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));}
-
-  myDiaglog(String ItemName){
-    showDialog(context: context, builder: (BuildContext context){
-      return  AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: RichText(text: TextSpan(
-                  text: 'Congratulation!\n\n',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  children: [
-                    const TextSpan(
-                      text: '  You have added\n',
-                      style:  TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal,
-                      ),
-
-                    ),
-                    const TextSpan(
-                      text: '                5\n',
-                      style:  TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    TextSpan(
-                      text: '$ItemName ',
-                      style:  const TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'on your bag!',
-                      style:  TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ]
-
-              )),
-            )
-          ],
-        ),
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(onPressed: (){},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.red,
-                  fixedSize: const Size(270, 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32.0),
-                  ),
-
-                ), child: const Text('OKAY'),),
-
-            ],
-          ),
-        ],
-      );
-    });
-  }
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.centerRight,
-                height: 100,
-                width: 400,
-                child: const Icon(Icons.search,size: 25,),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 13,right: 13),
-                height: 50,
-                width: 400,
-                child: const Text('My Bag',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 13,right: 13),
-                height: 100,
-                width: 400,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.white60,
-                      offset: Offset(2,2),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(8.0),bottomLeft: Radius.circular(8.0)),
-                      child:  Image.network('https://www.globalrepublic.in/cdn/shop/articles/image2.png?v=1666865339',
-                        height: 100,width: 70,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Column(
-                        children: [
-                          RichText(text: const TextSpan(
-                              text: 'Pullover\n',style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                              children: [
-                                TextSpan(
-                                  text: 'Color: ',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 17,
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'Black   ',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'Size: ',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey,
-
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'L',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black,
-
-                                ),
-                                ),
-                              ]
-                          ),),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  if(Count1>1){
-                                    Count1--;
-                                    TotalAmount();
-                                    setState(() {});
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    shape: const CircleBorder(),
-                                    backgroundColor: Colors.white
-                                ),
-                                child: const Text('-',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.normal,
-                                ),),
-                              ),
-                              Text(Count1.toString(),style: const TextStyle(
-                                fontSize: 18,
-                              ),),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Count1++;
-                                  TotalAmount();
-                                  setState(() {});
-
-                                  if(Count1==5){
-                                    myDiaglog('Pullover');
-                                  }
-
-
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    shape: const CircleBorder(),
-                                    backgroundColor: Colors.white
-                                ),
-                                child: const Text('+',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.normal,
-                                ),),
-                              ),
-
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 100,
-                          width: 129,
-                          alignment: Alignment.centerRight,
-                          child: Column(
-                            children: [
-                              const Icon(Icons.more_vert,color: Colors.grey,),
-                              Container(
-                                alignment: Alignment.bottomLeft,
-                                height: 66,
-                                width: 45,
-                                child: Text('$Amount1\$',style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold
-                                ),),
-                              ),
-                            ],
-
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 13,right: 13,top: 15),
-                height: 100,
-                width: 400,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.white60,
-                      offset: Offset(2,2),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(8.0),bottomLeft: Radius.circular(8.0)),
-                      child: Image.network('https://images.unsplash.com/photo-1618517351616-38fb9c5210c6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D',
-                        height: 100,width: 70,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Column(
-                        children: [
-                          RichText(text: const TextSpan(
-                              text: 'T-Shirt\n',style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                              children: [
-                                TextSpan(
-                                  text: 'Color: ',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 17,
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'Gray    ',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'Size: ',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey,
-
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'L',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black,
-
-                                ),
-                                ),
-                              ]
-                          ),),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  if(Count2>1){
-                                    Count2--;
-                                    TotalAmount();
-                                    setState(() {});
-                                  }
-
-
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    shape: const CircleBorder(),
-                                    backgroundColor: Colors.white
-                                ),
-                                child: const Text('-',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.normal,
-                                ),),
-                              ),
-                              Text(Count2.toString(),style: const TextStyle(
-                                fontSize: 18,
-                              ),),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Count2++;
-                                  TotalAmount();
-                                  setState(() {});
-
-                                  if(Count2==5){
-                                    myDiaglog('T-Shirt');
-                                    setState(() {});
-                                  }
-
-
-
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    shape: const CircleBorder(),
-                                    backgroundColor: Colors.white
-                                ),
-                                child: const Text('+',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.normal,
-                                ),),
-                              ),
-
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 100,
-                          width: 132,
-                          alignment: Alignment.centerRight,
-                          child: Column(
-                            children: [
-                              const Icon(Icons.more_vert,color: Colors.grey,),
-                              Container(
-                                alignment: Alignment.bottomLeft,
-                                height: 66,
-                                width: 45,
-                                child: Text('$Amount2\$',style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold
-                                ),),
-                              ),
-                            ],
-
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 13,right: 13,top: 15),
-                height: 100,
-                width: 400,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.white60,
-                      offset: Offset(2,2),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(8.0),bottomLeft: Radius.circular(8.0)),
-                      child: Image.network('https://i.pinimg.com/736x/72/3a/3f/723a3f75f3c8cb5613ec761182904f93.jpg',
-                        height: 100,width: 70,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Column(
-                        children: [
-                          RichText(text: const TextSpan(
-                              text: 'Sport Dress\n',style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                              children: [
-                                TextSpan(
-                                  text: 'Color: ',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 17,
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'Black   ',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'Size:',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey,
-
-                                ),
-                                ),
-                                TextSpan(
-                                  text: 'M',style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black,
-
-                                ),
-                                ),
-                              ]
-                          ),),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  if(Count3>1){
-                                    Count3--;
-                                    TotalAmount();
-                                    setState(() {});
-                                  }
-
-
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    shape: const CircleBorder(),
-                                    backgroundColor: Colors.white
-                                ),
-                                child: const Text('-',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.normal,
-                                ),),
-                              ),
-                              Text(Count3.toString(),style: const TextStyle(
-                                fontSize: 18,
-                              ),),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Count3++;
-                                  TotalAmount();
-                                  setState(() {});
-
-                                  if(Count3==5){
-                                    Center(
-                                      child:myDiaglog('Sport Dress'),
-                                    );
-
-                                    setState(() {});
-                                  }
-
-
-
-
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    shape: const CircleBorder(),
-                                    backgroundColor: Colors.white
-                                ),
-                                child: const Text('+',style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.normal,
-                                ),),
-                              ),
-
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 100,
-                          width: 128,
-                          alignment: Alignment.centerRight,
-                          child: Column(
-                            children: [
-                              const Icon(Icons.more_vert,color: Colors.grey,),
-                              Container(
-                                alignment: Alignment.bottomLeft,
-                                height: 66,
-                                width: 45,
-                                child: Text('$Amount3\$',style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),),
-                              ),
-                            ],
-
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 13,right: 13),
-                alignment: Alignment.bottomRight,
-                height: 276,
-                width: 400,
-                child: Row(
-                  children: [
-                    RichText(text: TextSpan(
-                      text: 'Total amount:                                                           ',
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 15,
-                      ),
-                      children: [
-                        TextSpan(
-                            text: '$total\$',
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            )
-                        ),
-                      ],
-
-                    )),
-
-                  ],
-                ),
-              ),
-              ElevatedButton(onPressed: (){
-                mySnackBar(context, 'Congratulation');
-
-              },style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                fixedSize: const Size(360, 10),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32.0),
-                ),
-
-              ), child: const Text('CHECK OUT',style: TextStyle(
-                color: Colors.white,
-              ),),)
-
-            ],
-          ),
-        );
-      },
-
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () {
+              //Route = Screen
+              // Navigator = Road
+              ///Route 1(Current screen) => Route 2(Settings Screen
+              /// step 1- Navigator - push
+              /// Step 2- Context - (Current Screen/Route)
+              /// step 3- Convert SettingsScreen as Route with MaterialPageRoute
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsScreen(username: 'Eyeasin',age: 18,),),
+              ).then((value) {
+                print(value);
+              });
+            }, child: const Text('Go To Setting'))
+          ],
+        ),
+      ),
+
     );
   }
 }
+
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key, required this.username,this.age});///this.age this is optional
+
+  final String username;
+  final int? age;///this is optional
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(username),
+            Text(age.toString()),
+            ElevatedButton(onPressed: () {
+              /// back to previous screen
+              Navigator.pop(context,'Arafat');
+            }, child: const Text('Back to Home Screen')),
+            ElevatedButton(onPressed: () {
+              /// go to profile
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const ProfileScreen()));
+            }, child: const Text('Go to Profile')),
+
+            ElevatedButton(onPressed: () {
+              /// push by replacement
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const ProfileScreen()));
+            }, child: const Text('Go to Profile by replace')),
+          ],
+        ),
+      ),
+
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () {
+              /// back to Settings screen
+              Navigator.pop(context);
+            }, child: const Text('Back to Settings')),
+            ElevatedButton(onPressed: () {
+              /// back to home screen
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>const HomeScreen()), (route) => false);
+            }, child: const Text('Back to Home')),
+          ],
+        ),
+      ),
+
+    );
+  }
+}
+
+
