@@ -1,59 +1,28 @@
-//statelesswidget is immutable
-//statefulwidget is mutable
+/*
+1. Round tap button what adds a new glass
+2. list of consume glass
+3. consume - number of glass and time
+show list
+ */
 
-import 'package:flutter/cupertino.dart';
+
+// TODO : Replace List with stack
+
 import 'package:flutter/material.dart';
+import 'package:practice/home_screen.dart';
 
 void main(){
-  runApp(MyApp());
+  runApp(const Watertrackerapp());
+
 }
 
-class MyApp extends StatelessWidget{
+class Watertrackerapp extends StatelessWidget{
+  const Watertrackerapp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomeScreen(),
-    );
-  }
-}
-class HomeScreen extends StatefulWidget {
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int count=0;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.home),
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(count.toString() ,style: TextStyle(
-              fontSize: 50,
-            ),),
-                    ElevatedButton(onPressed: () {
-                      count--;
-                      setState(() {});
-                    }, child: Icon(Icons.remove)),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          count++;
-          print(count);
-          setState(() {});
-        },
-        child: Icon(Icons.add),
-
-      ),
     );
   }
 }
