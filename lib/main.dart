@@ -14,13 +14,15 @@ class PhotoGallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  const MaterialApp(
       home: PhotoListScreen(),
     );
   }
 }
 
 class PhotoListScreen extends StatefulWidget {
+  const PhotoListScreen({super.key});
+
   @override
   _PhotoListScreenState createState() => _PhotoListScreenState();
 }
