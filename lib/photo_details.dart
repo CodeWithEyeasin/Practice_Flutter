@@ -10,21 +10,16 @@ class PhotoDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text('Photo Detail',style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-
-        ),),
+        title: Text('Photo Detail'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.network(photo.url),
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
           Text('Title: ${photo.title}'),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           Text('ID: ${photo.id}'),
         ],
       ),

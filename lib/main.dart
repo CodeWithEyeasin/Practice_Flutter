@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:practice/photo.dart';
+import 'package:practice/photo_details.dart';
 import 'package:practice/photoservice.dart';
-import 'package:practice/poto.dart';
 
 void main(){
   runApp( const PhotoGallery());
